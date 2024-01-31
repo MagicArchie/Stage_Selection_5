@@ -19,6 +19,7 @@ let lockedNodeSound;
 let homeButtonSound;
 
 let backgroundMusic;
+let ProgressL = 555;
 
 // Array to store links for each node
 const nodeLinks = [
@@ -30,6 +31,8 @@ const nodeLinks = [
   'stage6.html',
   'stage7.html'
 ];
+
+let LocationS = parseInt(localStorage.getItem('PageL'), 10);
 
 function preload() {
   //loadFont('Granesta.otf');
@@ -142,6 +145,10 @@ function draw() {
   background(Bg_Img);
 
   //textFont('Granesta', 100);
+  if (ProgressL > LocationS) {
+    LocationS = ProgressL;
+    localStorage.setItem('PageL', LocationS); 
+  }
 
   // Draw the return button
   image(returnButtonImage, returnButtonX, returnButtonY, returnButtonSize, returnButtonSize);
